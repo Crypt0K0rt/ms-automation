@@ -1,0 +1,24 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Project Release Status\n\n🎯 **Project Status Update Required** <at>@{outputs('Get_user_profile_(V2)')?['body/displayName']}</at>\n\nPlease provide updates for the following delayed projects within 30 minutes:\n\n**4. GOS Package & Image Rebuild (Owner: <at>@{outputs('Get_user_profile_(V2)')?['body/displayName']}</at>)**\n\n* Progress: [% Complete or Key Milestones Remaining]\n* Original Release Date: [07/31/2025]\n* Revised Release Date: [Fill in - REQUIRED]\n* Current Blockers & Owners: [List blockers and who owns resolution]\n* Recovery Actions: [What's being done to get back on track]\n\n\n**Please respond within 30 minutes with updates. If no changes, reply \"No updates since last check.\"**",
+            "wrap": true
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.4",
+    "msteams": {
+        "entities": [
+            {
+                "type": "mention",
+                "text": "<at>@{outputs('Get_user_profile_(V2)')?['body/displayName']}</at>",
+                "mentioned": {
+                    "id": "@{outputs('Get_user_profile_(V2)')?['body/userPrincipalName']}",
+                    "name": "@{outputs('Get_user_profile_(V2)')?['body/displayName']}"
+                }
+            }
+        ]
+    }
+}
