@@ -1,0 +1,24 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "GOSM Inventory Bug Status - Update\n\n🎯 <at>@{outputs('Get_user_profile_(V2)')?['body/displayName']}</at>\n\nPlease provide an update on GOSM Inventory bug status:\n\n**1. 🔴 Highest Priority Bugs (Still Open)**\n\n• Bug ID/Description - Owner\n• Bug ID/Description - Owner\n\n**2. 🟡 High Priority Bugs (Still Open)**\n\n• Bug ID/Description - Owner\n• Bug ID/Description - Owner\n\n**3. 🔍 Bugs Being Verified**\n\n• Bug ID/Description\n• Bug ID/Description\n\n**4. ✅ Fixed Bugs (Since Last Update)**\n\n• Bug ID/Description\n• Bug ID/Description\n\nThanks!",
+            "wrap": true
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.4",
+    "msteams": {
+        "entities": [
+            {
+                "type": "mention",
+                "text": "<at>@{outputs('Get_user_profile_(V2)')?['body/displayName']}</at>",
+                "mentioned": {
+                    "id": "@{outputs('Get_user_profile_(V2)')?['body/userPrincipalName']}",
+                    "name": "@{outputs('Get_user_profile_(V2)')?['body/displayName']}"
+                }
+            }
+        ]
+    }
+}
