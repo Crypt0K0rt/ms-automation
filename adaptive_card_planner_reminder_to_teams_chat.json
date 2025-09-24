@@ -1,0 +1,56 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "body": [
+      {
+        "type": "TextBlock",
+        "text": "Hi <at>@{outputs('Get_user_profile_(V2)')?['body']['displayName']}</at>,\n\nA new task has been assigned to you:",
+        "weight": "Bolder",
+        "size": "Medium",
+        "wrap": true
+      },
+      {
+        "type": "FactSet",
+        "facts": [
+          {
+            "title": "🔹 Task:",
+            "value": "@{triggerOutputs()?['body']['title']}"
+          },
+          {
+            "title": "📅 Due:",
+            "value": "@{formatDateTime(triggerOutputs()?['body']['dueDateTime'], 'MMM dd, yyyy')}"
+          },
+          {
+            "title": "🔗 View:",
+            "value": "[Open in Planner](https://tasks.office.com/YourTenantName.onmicrosoft.com/en-US/planner?plannerTaskId=@{triggerOutputs()?['body']['id']}&plannerPlanId=@{triggerOutputs()?['body']['planId']})"
+          }
+        ]
+      },
+      {
+        "type": "TextBlock",
+        "text": "Please update the status by the due date.",
+        "wrap": true,
+        "separator": true
+      }
+    ],
+    "actions": [
+      {
+        "type": "Action.OpenUrl",
+        "title": "View Task",
+        "url": "https://tasks.office.com/YourTenantName.onmicrosoft.com/en-US/planner?plannerTaskId=@{triggerOutputs()?['body']['id']}&plannerPlanId=@{triggerOutputs()?['body']['planId']}"
+      }
+    ],
+    "msteams": {
+      "entities": [
+        {
+          "type": "mention",
+          "text": "<at>@{outputs('Get_user_profile_(V2)')?['body']['displayName']}</at>",
+          "mentioned": {
+            "id": "@{outputs('Get_user_profile_(V2)')?['body']['userPrincipalName']}",
+            "name": "@{outputs('Get_user_profile_(V2)')?['body']['displayName']}"
+          }
+        }
+      ]
+    }
+  }
